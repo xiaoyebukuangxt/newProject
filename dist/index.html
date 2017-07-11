@@ -1,12 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" ng-app='app' ng-controller='AppController'>
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0">
+    <title>每日一笑</title>
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
+<!--导航-->
+<navs></navs>
+
+<!--内容-->
+<div class='content'>
+    <div class="home" ui-view='home' ng-show='id == 0'></div>
+    <div class="author" ui-view='author' ng-show='id == 1'></div>
+    <div class="content" ui-view='content' ng-show='id == 2'></div>
+    <div class="my" ui-view='my' ng-show='id == 3'></div>
+</div>
+<!--底部-->
+<tabbar></tabbar>
 
 
-<p>111</p>
+<script>
+    // 1.设置html的字体 根据屏幕宽度动态获取
+    /*
+     * 1000 / 10 = 100  100px == 1rem
+     * */
+    var fontSize = window.screen.width / 10 + 'px';
+    document.getElementsByTagName('html')[0].style.fontSize = fontSize;
+</script>
+<script src='lib/angular/angular.js'></script>
+<script src='lib/angular-ui-router/release/angular-ui-router.js'></script>
+<script src='js/index.js'></script>
 </body>
 </html>
